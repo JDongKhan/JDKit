@@ -27,7 +27,7 @@ static const void *tmaxWidth = &tmaxLines;
 
 //获得字符串实际尺寸
 + (CGSize)textSize:(NSString *)string font:(UIFont *)font width:(CGFloat)width {
-    if(string.length == 0){
+    if (string.length == 0) {
         return CGSizeZero;
     }
    return  [string sizeWithFont:font constrainedToWidth:width lineCount:0];
@@ -37,10 +37,10 @@ static const void *tmaxWidth = &tmaxLines;
 - (CGSize)viewSize {
     //计算实际frame大小，并将label的frame变成实际大小
     CGSize size = [UILabel textSize:self.text font:self.font width:self.bounds.size.width];
-    if(self.maxLines > 0){
+    if (self.maxLines > 0) {
         CGFloat lineHeight = self.font.lineHeight;
         CGFloat maxHeight = lineHeight * self.maxLines;
-        if(size.height > maxHeight){
+        if (size.height > maxHeight) {
             size.height = maxHeight;
         }
     }
@@ -109,7 +109,7 @@ static const void *tmaxWidth = &tmaxLines;
 }
 
 - (CGSize)estimateUISizeByBound:(CGSize)bound {
-	if ( nil == self.text || 0 == self.text.length )
+	if (nil == self.text || 0 == self.text.length)
 		return CGSizeZero;
     
 	return MB_MULTILINE_TEXTSIZE(self.text, self.font, bound, self.lineBreakMode);

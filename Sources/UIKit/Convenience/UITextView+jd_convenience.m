@@ -22,7 +22,7 @@ static const void *textViewMaxLenght = &textViewMaxLenght;
 
 //类方法计算文本size
 + (CGSize)textSize:(NSString *)string font:(UIFont *)font width:(CGFloat)width {
-    if(string.length == 0){
+    if (string.length == 0) {
         return CGSizeZero;
     }
 
@@ -34,58 +34,58 @@ static const void *textViewMaxLenght = &textViewMaxLenght;
 - (CGSize)textSize {
     CGFloat minHeight = self.minHeight;
     CGFloat maxHeight = self.maxHeight;
-    if(maxHeight == 0 ){
+    if (maxHeight == 0 ) {
         maxHeight = MAXFLOAT;
     }
-    if(minHeight <= 0 && (self.text.length == 0 || self.text == nil)){
+    if (minHeight <= 0 && (self.text.length == 0 || self.text == nil)) {
         return CGSizeZero ;
     }
     //计算文本size
     CGSize size = [UITextView textSize:self.text font:self.font width:self.bounds.size.width];
     CGSize textsize = CGSizeMake(size.width, size.height);
     //处理文本siz以满足设定条件
-    if(size.height <= minHeight){
-        if(minHeight == 0){
+    if (size.height <= minHeight) {
+        if (minHeight == 0) {
             textsize.height = 0;
-        }else{
+        } else {
             textsize.height = minHeight+16;
         }
-    }else if(size.height >= maxHeight){
+    } else if(size.height >= maxHeight) {
         textsize.height = maxHeight+16;
     }
     return textsize;    
 }
 
-- (void)setMinHeight:(CGFloat)minHeight{
+- (void)setMinHeight:(CGFloat)minHeight {
     objc_setAssociatedObject(self, tminHeight, [NSNumber numberWithFloat:minHeight], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (CGFloat)minHeight{
+- (CGFloat)minHeight {
     NSNumber *height = objc_getAssociatedObject(self, tminHeight);
     return [height floatValue];
 }
 
-- (void)setMaxHeight:(CGFloat)maxHeight{
+- (void)setMaxHeight:(CGFloat)maxHeight {
     objc_setAssociatedObject(self, tmaxHeight, [NSNumber numberWithFloat:maxHeight], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (CGFloat)maxHeight{
+- (CGFloat)maxHeight {
     NSNumber *height = objc_getAssociatedObject(self, tmaxHeight);
     return [height floatValue];
 }
 
-
-
-
 - (void)setValidEmpty:(BOOL)invalidEmpty {
     objc_setAssociatedObject(self, textViewInvalidEmpty, [NSNumber numberWithBool:invalidEmpty], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
 - (BOOL)validEmpty {
     return [objc_getAssociatedObject(self, textViewInvalidEmpty) boolValue];
 }
+
 - (void)setRegex:(NSString *)regex {
     objc_setAssociatedObject(self, textViewRegex, regex, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
 - (NSString *)regex {
     return objc_getAssociatedObject(self, textViewRegex);
 }

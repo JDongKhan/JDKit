@@ -37,7 +37,7 @@ static const void *ktapBlock = &ktapBlock;
 - (UIViewController *)topViewController {
     UIResponder *firstResponder = [self nextResponder];
     while (true && firstResponder != nil) {
-        if([firstResponder isKindOfClass:[UIViewController class]]){
+        if ([firstResponder isKindOfClass:[UIViewController class]]) {
             return (UIViewController *)firstResponder;
         }
         firstResponder = [firstResponder nextResponder];
@@ -147,40 +147,40 @@ static const void *ktapBlock = &ktapBlock;
 - (void)addSubview:(UIView *)view alignment:(JDViewAlignment)alignment offset:(CGPoint)offset {
     CGRect frame = view.frame;
     //左上
-    if(alignment == (JDViewAlignmentLeft |JDViewAlignmentTop)) {
+    if (alignment == (JDViewAlignmentLeft |JDViewAlignmentTop)) {
         frame.origin.x = 0.0f+offset.x;
         frame.origin.y = 0.0f+offset.y;
-    } else if(alignment == (JDViewAlignmentLeft | JDViewAlignmentCenter)) {//左中
+    } else if (alignment == (JDViewAlignmentLeft | JDViewAlignmentCenter)) {//左中
         frame.origin.x = 0.0f+offset.x;
         frame.origin.y = (self.frame.size.height-frame.size.height)/2.0f+offset.y;
-    } else if(alignment == (JDViewAlignmentLeft | JDViewAlignmentBottom)) {//左下
+    } else if (alignment == (JDViewAlignmentLeft | JDViewAlignmentBottom)) {//左下
         frame.origin.x = 0.0f+offset.x;
         frame.origin.y = self.frame.size.height-frame.size.height+offset.y;
-    } else if(alignment == (JDViewAlignmentCenter | JDViewAlignmentTop)) {//中上
+    } else if (alignment == (JDViewAlignmentCenter | JDViewAlignmentTop)) {//中上
         frame.origin.x = (self.frame.size.width-frame.size.width)/2.0f;
         frame.origin.y = 0.0f+offset.y;
-    } else if(alignment == JDViewAlignmentCenter) {//中中
+    } else if (alignment == JDViewAlignmentCenter) {//中中
         frame.origin.x = (self.frame.size.width-frame.size.width)/2.0f+offset.x;
         frame.origin.y = (self.frame.size.height-frame.size.height)/2.0f+offset.y;
-    } else if(alignment == (JDViewAlignmentCenter | JDViewAlignmentBottom)) {// 中下
+    } else if (alignment == (JDViewAlignmentCenter | JDViewAlignmentBottom)) {// 中下
         frame.origin.x = (self.frame.size.width-frame.size.width)/2.0f+offset.x;
         frame.origin.y = self.frame.size.height-frame.size.height+offset.y;
-    } else if(alignment == (JDViewAlignmentRight | JDViewAlignmentTop)) {//右上
+    } else if (alignment == (JDViewAlignmentRight | JDViewAlignmentTop)) {//右上
         frame.origin.x = self.frame.size.width-frame.size.width+offset.x;
         frame.origin.y = 0.0f+offset.y;
-    } else if(alignment == (JDViewAlignmentRight | JDViewAlignmentCenter)) {//右中
+    } else if (alignment == (JDViewAlignmentRight | JDViewAlignmentCenter)) {//右中
         frame.origin.x = self.frame.size.width-frame.size.width+offset.x;
         frame.origin.y = (self.frame.size.height-frame.size.height)/2.0f+offset.y;
-    } else if(alignment == (JDViewAlignmentRight | JDViewAlignmentBottom)) {//右下
+    } else if (alignment == (JDViewAlignmentRight | JDViewAlignmentBottom)) {//右下
         frame.origin.x = self.frame.size.width-frame.size.width+offset.x;
         frame.origin.y = self.frame.size.height-frame.size.height+offset.y;
-    } else if(alignment == JDViewAlignmentLeft) {
+    } else if (alignment == JDViewAlignmentLeft) {
         frame.origin.x = 0.0f+offset.x;
-    } else if(alignment == JDViewAlignmentRight) {
+    } else if (alignment == JDViewAlignmentRight) {
         frame.origin.x = self.frame.size.width-frame.size.width+offset.x;
-    } else if(alignment == JDViewAlignmentTop) {
+    } else if (alignment == JDViewAlignmentTop) {
         frame.origin.y = 0.0f+offset.y;
-    } else if(alignment == JDViewAlignmentBottom) {
+    } else if (alignment == JDViewAlignmentBottom) {
         frame.origin.y = self.frame.size.height-frame.size.height+offset.y;
     }
     view.frame = frame;
@@ -271,7 +271,7 @@ static const void *ktapBlock = &ktapBlock;
     NSArray *fillteredArray = [constraintsArr filteredArrayUsingPredicate:predicate];
     if (fillteredArray.count == 0) {
         NSArray *selffillteredArray = [self.constraints filteredArrayUsingPredicate:predicate];
-        if(selffillteredArray.count == 0) {
+        if (selffillteredArray.count == 0) {
             return nil;
         } else {
             return selffillteredArray.firstObject;
@@ -390,11 +390,11 @@ static const void *ktapBlock = &ktapBlock;
     for (NSLayoutConstraint *constraint in constrains) {
         if (constraint.firstAttribute == NSLayoutAttributeHeight && height >= 0) {
             constraint.constant = height;
-        }else if (constraint.firstAttribute == NSLayoutAttributeWidth && width >= 0) {
+        } else if (constraint.firstAttribute == NSLayoutAttributeWidth && width >= 0) {
             constraint.constant = width;
         }
     }
-    if(height == 0 || width == 0) {
+    if (height == 0 || width == 0) {
         self.hidden = YES;
     } else {
         self.hidden = NO;

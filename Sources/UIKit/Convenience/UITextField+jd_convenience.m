@@ -48,7 +48,7 @@ static const void *textFieldregex = &textFieldregex;
 }
 
 //设置范围
--(void) setRangeDecimal:(int) rangeDecimal {
+- (void) setRangeDecimal:(int)rangeDecimal {
     __weak typeof (self) weakSelf = self;
     [[NSNotificationCenter defaultCenter] addObserver:self forName:UITextFieldTextDidChangeNotification withNotifyBlock:^(NSNotification *notification){
         [weakSelf textFiledEditChanged:notification];
@@ -56,7 +56,7 @@ static const void *textFieldregex = &textFieldregex;
     objc_setAssociatedObject(self, trangeDecimal, [NSNumber numberWithInteger:rangeDecimal], OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(int)rangeDecimal{
+- (int)rangeDecimal {
    NSNumber *rangeDecimal =  objc_getAssociatedObject(self, trangeDecimal);
     return [rangeDecimal intValue];
 }
@@ -76,10 +76,12 @@ static const void *textFieldregex = &textFieldregex;
     }
     return lable;
 }
+
 - (void)setTextWithEditChanged:(NSString *)textWithEditChanged {
     self.text = textWithEditChanged;
     [self reloadTipsWithTextField:self];
 }
+
 - (NSString *)textWithEditChanged {
     return self.text;
 }
@@ -117,12 +119,12 @@ static const void *textFieldregex = &textFieldregex;
                 }
             }
             // 有高亮选择的字符串，则暂不对文字进行统计和限制
-            else{
+            else {
                 
             }
         }
         // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
-        else{
+        else {
             if (toBeString.length > maxlenght) {
                 textField.text = [toBeString substringToIndex:maxlenght];
             }
@@ -131,7 +133,7 @@ static const void *textFieldregex = &textFieldregex;
     }
     //银行卡格式化
     JDTextFieldFormatType textFieldFormatType = self.formatType;
-    if(textFieldFormatType == JDTextFieldFormatBankCard){
+    if (textFieldFormatType == JDTextFieldFormatBankCard) {
         NSString *tmpStr = [self numText];
         NSUInteger groupLenght = 4;
         NSUInteger size = (tmpStr.length / groupLenght);
@@ -145,9 +147,9 @@ static const void *textFieldregex = &textFieldregex;
         }
         tmpStr = [tmpStrArr componentsJoinedByString:@" "];
         self.text = tmpStr;
-    }else if(textFieldFormatType == JDTextFieldFormatPhone){
+    } else if(textFieldFormatType == JDTextFieldFormatPhone) {
         NSString *tmpStr = [self numText];
-        if(tmpStr.length > 3){
+        if (tmpStr.length > 3) {
             NSUInteger groupLenght = 4;
             NSUInteger size = ((tmpStr.length-3) / groupLenght);
             NSMutableArray *tmpStrArr = [[NSMutableArray alloc] init];
@@ -165,7 +167,7 @@ static const void *textFieldregex = &textFieldregex;
         self.text = tmpStr;
     }
     //如小数位大于0,将限制下位数
-    if(self.rangeDecimal>0){
+    if (self.rangeDecimal>0) {
         NSString *toBeString = textField.text;
         NSRange range =  [toBeString rangeOfString:@"."];
         if (range.length>0) {

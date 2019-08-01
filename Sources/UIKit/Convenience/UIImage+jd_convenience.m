@@ -136,8 +136,7 @@
     NSArray *MaxColor=nil;
     NSUInteger MaxCount=0;
     
-	while ( (curColor = [enumerator nextObject]) != nil )
-	{
+	while ( (curColor = [enumerator nextObject]) != nil ) {
 		NSUInteger tmpCount = [cls countForObject:curColor];
         
 		if ( tmpCount < MaxCount ) continue;
@@ -156,13 +155,18 @@
     return [self imageBluredWithLightAlpha:0.1 radius:10 colorSaturationFactor:1];
 }
 
-- (UIImage *)imageBluredWithLightAlpha:(CGFloat)alpha radius:(CGFloat)radius colorSaturationFactor:(CGFloat)colorSaturationFactor {
+- (UIImage *)imageBluredWithLightAlpha:(CGFloat)alpha
+                                radius:(CGFloat)radius
+                 colorSaturationFactor:(CGFloat)colorSaturationFactor {
     UIColor *tintColor = [UIColor colorWithWhite:1.0 alpha:alpha];
     return [self imageBluredWithRadius:radius tintColor:tintColor saturationDeltaFactor:colorSaturationFactor maskImage:nil];
 }
 
 // 内部方法,核心代码,封装了毛玻璃效果 参数:半径,颜色,色彩饱和度
-- (UIImage *)imageBluredWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationDeltaFactor:(CGFloat)saturationDeltaFactor maskImage:(UIImage * _Nullable)maskImage {
+- (UIImage *)imageBluredWithRadius:(CGFloat)blurRadius
+                         tintColor:(UIColor *)tintColor
+             saturationDeltaFactor:(CGFloat)saturationDeltaFactor
+                         maskImage:(UIImage * _Nullable)maskImage {
     CGRect imageRect = { CGPointZero, self.size };
     UIImage *effectImage = self;
     BOOL hasBlur = blurRadius > __FLT_EPSILON__;
@@ -423,7 +427,7 @@
     CGFloat x1 = 4,y1 = 4;
     CGFloat x2 = 0,y2 = 0;
     CGFloat x3 = 0,y3 = 0;
-    if(direction == ArrowsDirectionDown){
+    if (direction == ArrowsDirectionDown) {
         //箭头 Arrows
         x1 = 4.0f;
         y1 = 4.0f;
@@ -431,21 +435,21 @@
         y2 = size.height-4;
         x3 = size.width-4;
         y3 = 4;
-    }else if(direction == ArrowsDirectionRight){
+    } else if (direction == ArrowsDirectionRight) {
         x1 = 4;
         y1 = 4;
         x2 = size.width-4;
         y2 = size.height/2;
         x3 = 4;
         y3 = size.height-4;
-    }else if(direction == ArrowsDirectionUp){
+    } else if (direction == ArrowsDirectionUp) {
         x1 = 4;
         y1 = size.height-4;
         x2 = size.width/2;
         y2 = 4;
         x3 = size.width-4;
         y3 = size.height-4;
-    }else if(direction == ArrowsDirectionLeft){
+    } else if (direction == ArrowsDirectionLeft) {
         x1 = size.width-4;
         y1 = 4;
         x2 = 4;

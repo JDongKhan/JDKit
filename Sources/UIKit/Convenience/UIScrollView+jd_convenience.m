@@ -20,6 +20,7 @@
 - (void)addPageItemArray:(NSArray *)itemArray{
     [self addPageItemArray:itemArray orientation:JDScrollViewHorizontal];
 }
+
 - (void)addPageItemArray:(NSArray *)itemArray orientation:(JDScrollViewOrientation)orientation{
     self.pagingEnabled = YES;
     
@@ -37,7 +38,7 @@
             x += width;
             contentWidth += width;
             contentHeight = contentHeight>height?contentHeight:height;
-        }else{
+        } else {
             y += height;
             contentWidth = contentWidth > width ? contentWidth : width;
             contentHeight += height;
