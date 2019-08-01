@@ -1,0 +1,34 @@
+{
+  "name": "JDKit",
+  "version": "1.0.0",
+  "summary": "JDKit",
+  "homepage": "https://github.com/JDongKhan",
+  "license": "MIT",
+  "authors": {
+    "JD": "419591321@qq.com"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "git": "https://github.com/JDongKhan/JDKit.git",
+    "tag": "1.0.0"
+  },
+  "requires_arc": true,
+  "default_subspecs": "UIKit",
+  "subspecs": [
+    {
+      "name": "Foundation",
+      "source_files": "Sources/Foundation/**/*.{h,m,mm}"
+    },
+    {
+      "name": "UIKit",
+      "source_files": "Sources/UIKit/**/*.{h,m}",
+      "dependencies": {
+        "JDKit/Foundation": [
+
+        ]
+      }
+    }
+  ]
+}

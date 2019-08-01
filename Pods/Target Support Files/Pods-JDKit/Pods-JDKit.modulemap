@@ -1,0 +1,6 @@
+framework module Pods_JDKit {
+  umbrella header "Pods-JDKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

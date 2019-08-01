@@ -1,0 +1,20 @@
+PODS:
+  - JDKit (1.0.0):
+    - JDKit/UIKit (= 1.0.0)
+  - JDKit/Foundation (1.0.0)
+  - JDKit/UIKit (1.0.0):
+    - JDKit/Foundation
+
+DEPENDENCIES:
+  - JDKit (from `./`)
+
+EXTERNAL SOURCES:
+  JDKit:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  JDKit: 451870acc64b08746ffc60b0e09888ef5fe16507
+
+PODFILE CHECKSUM: a445b7e72446260cdef2a8ffd3d9805c39fd8be5
+
+COCOAPODS: 1.7.4
