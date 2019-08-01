@@ -20,29 +20,27 @@
             NSString *destMethodName = [NSString stringWithFormat:@"set%@:",[keyName capitalizedString]]; //capitalizedString返回每个单词首字母大写的字符串（每个单词的其余字母转换为小写）
             SEL destMethodSelector = NSSelectorFromString(destMethodName);
             if ([entity respondsToSelector:destMethodSelector]) {
-                
                 [entity performSelector:destMethodSelector withObject:[self objectForKey:keyName] afterDelay:0.0];
             }
-        }//end for
-    }//end if
+        }
+    }
 }
 
 //实体对象转为字典对象
 + (NSDictionary *)entityToDictionary:(id)entity {
-    if([entity isKindOfClass:[NSDictionary class]]){
+    if ([entity isKindOfClass:[NSDictionary class]]) {
         return entity;
     }
-    if([entity isKindOfClass:[NSArray class]]){
+    if ([entity isKindOfClass:[NSArray class]]) {
         return nil;
     }
     Class clazz = [entity class];
     u_int count;
     
-    objc_property_t* properties = class_copyPropertyList(clazz, &count);
-    
+    objc_property_t *properties = class_copyPropertyList(clazz, &count);
     NSMutableDictionary *propertiesDic = [NSMutableDictionary dictionaryWithCapacity:count];
 
-    for (int i = 0; i < count ; i++) {
+    for (int i = 0; i < count; i++) {
         objc_property_t prop=properties[i];
         const char* propertyName = property_getName(prop);
         //NSString *key = [NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding];
@@ -52,7 +50,7 @@
         //        HSLog(@"%@",[NSString stringWithUTF8String:attributeName]);
         id value =  nil;
         SEL sel = NSSelectorFromString(key);
-        if([entity respondsToSelector:sel]){
+        if ([entity respondsToSelector:sel]) {
            // value = [entity performSelector:sel];
     #pragma clang diagnostic push
     #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -60,12 +58,12 @@
     #pragma clang diagnostic push
             
         }
-        if(value == nil){
+        if (value == nil) {
             value = [NSNull null];
         }
-        if(value != [NSNull null] && [value description] == nil){
+        if (value != [NSNull null] && [value description] == nil) {
             [propertiesDic setValue:[NSDictionary entityToDictionary:value] forKey:key];
-        }else{
+        } else {
             [propertiesDic setValue:value forKey:key];
         }
     }
@@ -79,7 +77,7 @@
 
 - (id)entityForKey:(NSString *)key {
     id obj = [self valueForKey:key];
-    if(obj == NULL || (NSNull *)obj == [NSNull null]){
+    if (obj == NULL || (NSNull *)obj == [NSNull null]) {
         return nil;
     }
     return obj;
@@ -94,13 +92,13 @@
     [dictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if (obj == NULL || (NSNull *)obj == [NSNull null]) {
             obj = nil;
-        }else if([obj isKindOfClass:[NSArray class]]){
+        } else if ([obj isKindOfClass:[NSArray class]]) {
             NSMutableArray *array = [NSMutableArray array];
             for (id arrayObj in obj) {
                 [array addObject:[NSMutableDictionary toTrimNill:arrayObj]];
             }
             obj = array;
-        }else if([obj isKindOfClass:[NSDictionary class]]){
+        } else if ([obj isKindOfClass:[NSDictionary class]]) {
             obj = [NSMutableDictionary toTrimNill:obj];
         }
         [_dic setValue:obj forKey:key];

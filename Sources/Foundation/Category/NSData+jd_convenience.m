@@ -14,9 +14,9 @@
 
 //2进制data转16进制
 - (NSString *)dataToHexString {
-    NSUInteger          len = [self length];
-    char *              chars = (char *)[self bytes];
-    NSMutableString *   hexString = [[NSMutableString alloc] init];
+    NSUInteger len = [self length];
+    char *chars = (char *)[self bytes];
+    NSMutableString *hexString = [[NSMutableString alloc] init];
     
     for(NSUInteger i = 0; i < len; i++ ){
         [hexString appendString:[NSString stringWithFormat:@"%0.2hhx", chars[i]]];

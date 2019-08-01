@@ -40,7 +40,7 @@ static char associatedObjectsKey;
 
 //处理空对象
 + (instancetype)toTrimNull:(id)obj {
-    if(obj == nil || obj == NULL || (NSNull *)obj == [NSNull null]) {
+    if (obj == nil || obj == NULL || (NSNull *)obj == [NSNull null]) {
         return nil;
     }
     return obj;
@@ -48,7 +48,7 @@ static char associatedObjectsKey;
 
 //判断是否为空
 + (BOOL)isNullObject:(id)obj {
-    if(obj == nil || obj == NULL || (NSNull *)obj == [NSNull null]) {
+    if (obj == nil || obj == NULL || (NSNull *)obj == [NSNull null]) {
         return YES;
     }
     return NO;
@@ -56,22 +56,22 @@ static char associatedObjectsKey;
 
 //判断是否为空
 + (BOOL)isEmptyObject:(id)obj {
-    if(obj == nil || obj == NULL || (NSNull *)obj == [NSNull null]) {
+    if (obj == nil || obj == NULL || (NSNull *)obj == [NSNull null]) {
         return YES;
     }
-    if([obj isKindOfClass:[NSString class]]) {
+    if ([obj isKindOfClass:[NSString class]]) {
         NSString *str = obj;
-        if(str.length == 0){
+        if (str.length == 0) {
             return YES;
         }
-    } else if([obj isKindOfClass:[NSArray class]]) {
+    } else if ([obj isKindOfClass:[NSArray class]]) {
         NSArray *array = obj;
-        if(array.count == 0){
+        if (array.count == 0) {
             return YES;
         }
-    } else if([obj isKindOfClass:[NSDictionary class]]) {
+    } else if ([obj isKindOfClass:[NSDictionary class]]) {
         NSDictionary *dic = obj;
-        if(dic.count == 0){
+        if (dic.count == 0) {
             return YES;
         }
     }
@@ -89,14 +89,14 @@ static char associatedObjectsKey;
         NSString *jsonString = [[NSString alloc] initWithData:jsonData
                                                      encoding:NSUTF8StringEncoding];
         return jsonString;
-    }else{
+    } else {
         return nil;
     }
 }
 
 //json字符串转对象
 + (id)jsonToObject:(NSString *)jsonString {
-    if(jsonString == nil) {
+    if (jsonString == nil) {
         return nil;
     }
     NSError *error;
@@ -121,7 +121,7 @@ static char associatedObjectsKey;
     Class clazz = [self class];
     u_int count;
     objc_property_t* properties = class_copyPropertyList(clazz, &count);
-    for (int i = 0; i < count ; i++) {
+    for (int i = 0; i < count; i++) {
         objc_property_t prop=properties[i];
         const char* propertyName = property_getName(prop);
         //NSString *key = [NSString stringWithCString:propertyName encoding:NSUTF8StringEncoding];

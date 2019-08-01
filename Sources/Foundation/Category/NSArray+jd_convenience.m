@@ -15,11 +15,11 @@
 - (NSMutableArray *)toMutableArray {
     NSMutableArray *array = [NSMutableArray array];
     for (id item in self) {
-        if([item isKindOfClass:[NSDictionary class]]){
+        if ([item isKindOfClass:[NSDictionary class]]) {
             [array addObject:[((NSDictionary *)item) toMutableDictionary]];
-        }else if([item isKindOfClass:[NSArray class]]){
+        } else if ([item isKindOfClass:[NSArray class]]) {
             [array addObject:[((NSArray *)item) toMutableArray]];
-        }else{
+        } else {
             [array addObject:item];
         }
     }

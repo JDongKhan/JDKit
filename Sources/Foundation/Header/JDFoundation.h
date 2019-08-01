@@ -20,6 +20,8 @@
 
 #import <mach/mach_time.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 //计算方法时间
 static inline void JDTimeThisBlock (void (^block)(void), void (^complete)(double ms)) {
     mach_timebase_info_data_t info;
@@ -140,3 +142,4 @@ _Pragma("clang diagnostic pop") \
 #define JD_AddObserverNotification(target,sel,name)  [[NSNotificationCenter defaultCenter] addObserver:target selector:sel name:name object:nil];
 #define JD_RemoveObserverNotification [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+NS_ASSUME_NONNULL_END

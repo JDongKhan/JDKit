@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithString:(NSString *)string font:(UIFont *)font foregroundColor:(UIColor *)foregroundColor lineSpacing:(CGFloat)lineSpacing;
 
+
 - (CGFloat)heightConstrainedToWidth:(CGFloat)maxWidth;
 
     /**

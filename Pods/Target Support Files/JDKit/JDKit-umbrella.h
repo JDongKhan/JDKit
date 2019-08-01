@@ -22,6 +22,7 @@
 #import "NSString+jd_convenience.h"
 #import "NSUserDefaults+jd_convenience.h"
 #import "JDFoundation.h"
+#import "SPTWeakTimer.h"
 #import "UIActionSheet+jd_convenience.h"
 #import "UIAlertView+jd_convenience.h"
 #import "UIButton+jd_convenience.h"

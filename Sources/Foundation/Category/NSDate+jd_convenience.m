@@ -265,11 +265,11 @@
     return ([self compare:otherDate] == NSOrderedDescending);
 }
 
-- (BOOL)isInFuture {
+- (BOOL)isFuture {
     return ([self laterThan:[NSDate date]]);
 }
 
-- (BOOL)isInPast {
+- (BOOL)isPast {
     return ([self earlierThan:[NSDate date]]);
 }
 

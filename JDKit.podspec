@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name         = 'JDKit'
-    spec.version      = '1.0.0' 
+    spec.version      = '0.0.1' 
     spec.summary      = 'JDKit'
     spec.homepage     = 'https://github.com/JDongKhan'
     spec.license      = 'MIT'

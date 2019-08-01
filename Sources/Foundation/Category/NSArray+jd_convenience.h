@@ -20,14 +20,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSMutableArray *)toMutableArray;
 
 /*!
- *	@brief	取到某一项的前一项
+ *	@brief	Get the previous object
  *	@param 	object 	object The reference object.
  *	@return	The previous object or `nil` if not found.
  */
 - (id)objectBefore:(id)object;
 
 /*!
- *  Get the previous object with ot without wrap.
+ *  Get the previous object with or without wrap.
  *
  *  @param object The reference object.
  *  @param wrap   Whether to cirularly wrap the array to get the previous element.

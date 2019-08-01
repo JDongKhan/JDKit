@@ -184,7 +184,7 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
 }
 
 + (NSAttributedString *)attributedStringFromString:(NSString *)string NS_AVAILABLE(10_0, 7_0) {
-    if(string.length > 0){
+    if (string.length > 0) {
         return string.attributedString;
     }
     return nil;
@@ -218,7 +218,7 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
     return [NSString toTrimNill:string default:@""];
 }
 + (NSString *)toTrimNill:(NSString *)string default:(NSString *)defaultString {
-    if(string == nil || string == NULL || (NSNull *)string == [NSNull null]){
+    if (string == nil || string == NULL || (NSNull *)string == [NSNull null]) {
         return defaultString;
     }
     return string;
@@ -253,14 +253,14 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
 
 - (NSDate *)stringToDate:(NSString *)format {
     NSString *dateString = self;
-    if(dateString.length > format.length){
+    if (dateString.length > format.length) {
         dateString = [self substringToIndex:format.length];
-    }else if(format.length > dateString.length){
-        if(dateString.length == 10){
+    } else if(format.length > dateString.length) {
+        if (dateString.length == 10) {
             dateString = [NSString stringWithFormat:@"%@ 00:00:00",dateString];
-        }else if(dateString.length == 13){
+        } else if (dateString.length == 13) {
             dateString = [NSString stringWithFormat:@"%@:00:00",dateString];
-        }else if(dateString.length == 16){
+        } else if (dateString.length == 16) {
             dateString = [NSString stringWithFormat:@"%@:00",dateString];
         }
     }
@@ -303,7 +303,7 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
 
 //打电话
 - (BOOL)stringTelPhone {
-    if([self stringCanTelPhone]){
+    if ([self stringCanTelPhone]) {
         return [self openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@",self]]];
     }
     return NO;
@@ -318,7 +318,7 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
  ** 首字母大写 其他保持不变  capitalizedString是首字母大写，其他都变成小写了
  **/
 - (NSString *)toCapitalizedString {
-    if(self.length <= 1){
+    if (self.length <= 1) {
         return [self uppercaseString];
     }
     NSString *firstChar = [[self substringToIndex:1] uppercaseString];
@@ -345,7 +345,7 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
     }
     
     NSData *data = [NSData dataWithBytes:buf length:len];
-    free( buf );
+    free(buf);
     return data;
 }
 
@@ -353,17 +353,16 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
     const char *floatChars = [stringFloat UTF8String];
     NSUInteger length = [stringFloat length];
     int i = (int)length-1;
-    for(; i>=0; i--)
-    {
-        if(floatChars[i] == '0') {
+    for (; i>=0; i--) {
+        if (floatChars[i] == '0') {
         } else {
-            if(floatChars[i] == '.')
+            if (floatChars[i] == '.')
                 i--;
             break;
         }
     }
     NSString *returnString;
-    if(i == -1) {
+    if (i == -1) {
         returnString = @"0";
     } else {
         returnString = [stringFloat substringToIndex:i+1];
@@ -394,8 +393,8 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
 
 //将stringJson转换为对象
 - (id)JSONValue {
-    NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
-    NSError* error = nil;
+    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error = nil;
     id result = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
     if (error != nil) return nil;
     return result;
@@ -476,9 +475,9 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
 //从身份证上判断性别
 + (BOOL)sexInfo:(NSString *)identityCard {
     NSInteger sex = 0;
-    if(identityCard.length == 15){
+    if (identityCard.length == 15) {
         sex = [[identityCard substringFromIndex:14] integerValue];
-    }else if(identityCard.length == 18){
+    } else if (identityCard.length == 18) {
         sex = [[identityCard substringWithRange:NSMakeRange(16, 1)] integerValue];
     }
     return sex %2 == 0?NO:YES;
@@ -539,8 +538,7 @@ static const void *JDAttributedStringKey = &JDAttributedStringKey;
                 *constrained = YES;
             }
             height = maxSize.height;
-        }
-        else {
+        } else {
             if (constrained != nil) {
                 *constrained = NO;
             }

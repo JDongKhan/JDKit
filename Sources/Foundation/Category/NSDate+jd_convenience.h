@@ -130,12 +130,12 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
  是否是将来
  */
-@property (nonatomic, readonly) BOOL isInFuture;
+@property (nonatomic, readonly) BOOL isFuture;
 
 /*!
  是否是过去
  */
-@property (nonatomic, readonly) BOOL isInPast;
+@property (nonatomic, readonly) BOOL isPast;
 
 /*!
  计算偏移月的日期
